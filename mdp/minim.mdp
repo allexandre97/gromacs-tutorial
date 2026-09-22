@@ -1,0 +1,24 @@
+; Energy minimization using conjugate gradients
+
+integrator      = steep
+emtol           = 10.0       ; kJ mol^-1 nm^-1
+nsteps          = 50000
+; nstcgsteep      = 100
+
+; Neighbor searching
+cutoff-scheme   = Verlet
+nstlist         = 20
+
+; Electrostatics
+coulombtype     = PME
+rcoulomb        = 1.0
+
+; van der Waals
+vdwtype                 = Cut-off
+vdw-modifier            = Potential-shift
+rvdw                    = 1.0
+DispCorr                = EnerPres
+
+; Output
+nstenergy       = 1000
+nstlog          = 1000

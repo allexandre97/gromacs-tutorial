@@ -1,0 +1,55 @@
+; NVT equilibration
+; 1 ns at 2 fs timestep
+
+; Run control
+integrator              = md        ; Leap-frog integrator
+dt                      = 0.002     ; ps = 2 fs
+nsteps                  = 500000    ; 500000 * 0.002 ps = 1000 ps = 1 ns
+
+; Output control
+nstlog                  = 500
+nstenergy               = 500
+nstxout-compressed      = 5000
+
+; Neighbor searching
+cutoff-scheme           = Verlet
+nstlist                 = 20
+rlist                   = 1.0
+
+; Electrostatics
+coulombtype             = PME
+rcoulomb                = 1.0
+fourierspacing          = 0.12
+pme-order               = 4
+
+; Lennard-Jones interactions
+vdwtype                 = Cut-off ;PME
+vdw-modifier            = Force-switch
+rvdw                    = 1.0
+
+; Temperature coupling
+tcoupl                  = V-rescale
+tc-grps                 = Protein Water_and_Ions
+tau-t                   = 1.0 1.0
+ref-t                   = 340 340
+
+; Pressure coupling
+pcoupl                  = no
+
+; Constraints
+constraints             = h-bonds
+constraint-algorithm    = lincs
+lincs-iter              = 1
+lincs-order             = 4
+
+; Periodic boundary conditions
+pbc                     = xyz
+
+; Center-of-mass motion removal
+comm-mode               = Linear
+nstcomm                 = 100
+
+; Initial velocities
+gen-vel                 = yes
+gen-temp                = 300
+gen-seed                = -1

@@ -1,0 +1,60 @@
+; NPT production
+; 5 us at 4 fs timestep with HMR factor 3
+
+; Run control
+integrator              = md
+dt                      = 0.004
+nsteps                  = 1250000000
+
+; Output control
+nstlog                  = 12500      ; 50 ps
+nstenergy               = 2500       ; 10 ps
+nstxout-compressed      = 12500      ; 50 ps
+
+; Neighbor searching
+cutoff-scheme           = Verlet
+nstlist                 = 20
+
+; Electrostatics
+coulombtype             = PME
+rcoulomb                = 1.0
+fourierspacing          = 0.12
+pme-order               = 4
+
+; Lennard-Jones interactions
+vdwtype                 = Cut-off
+vdw-modifier            = Potential-shift
+rvdw                    = 1.0
+DispCorr                = EnerPres
+
+; Temperature coupling
+tcoupl                  = V-rescale
+tc-grps                 = Protein SOL_Ion
+tau-t                   = 1.0 1.0
+ref-t                   = 300 300
+
+; Pressure coupling
+pcoupl                  = C-rescale
+pcoupltype              = isotropic
+ref-p                   = 1.0
+tau-p                   = 5.0
+compressibility         = 4.5e-5
+
+; Hydrogen mass repartitioning
+mass-repartition-factor = 3
+
+; Constraints
+constraints             = h-bonds
+constraint-algorithm    = lincs
+lincs-iter              = 1
+lincs-order             = 4
+
+; Periodic boundary conditions
+pbc                     = xyz
+
+; Center-of-mass motion removal
+comm-mode               = Linear
+nstcomm                 = 250
+
+; Continue from equilibrated system
+gen-vel                 = no
