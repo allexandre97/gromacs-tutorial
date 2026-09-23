@@ -1,9 +1,8 @@
-; Energy minimization using conjugate gradients
+; Energy minimization using steepest descent
 
 integrator      = steep
 emtol           = 10.0       ; kJ mol^-1 nm^-1
-nsteps          = 50000
-; nstcgsteep      = 100
+nsteps          = 10000
 
 ; Neighbor searching
 cutoff-scheme   = Verlet

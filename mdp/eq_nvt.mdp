@@ -7,9 +7,9 @@ dt                      = 0.002     ; ps = 2 fs
 nsteps                  = 500000    ; 500000 * 0.002 ps = 1000 ps = 1 ns
 
 ; Output control
-nstlog                  = 500
-nstenergy               = 500
-nstxout-compressed      = 5000
+nstlog                  = 1000 ; Every 2 ps
+nstenergy               = 1000 ; Every 2 ps
+nstxout-compressed      = 5000 ; Every 10 ps
 
 ; Neighbor searching
 cutoff-scheme           = Verlet
@@ -33,6 +33,12 @@ tc-grps                 = Protein Water_and_Ions
 tau-t                   = 1.0 1.0
 ref-t                   = 340 340
 
+; Initial velocities
+gen-vel                 = yes
+gen-temp                = 340
+gen-seed                = -1
+
+
 ; Pressure coupling
 pcoupl                  = no
 
@@ -48,8 +54,3 @@ pbc                     = xyz
 ; Center-of-mass motion removal
 comm-mode               = Linear
 nstcomm                 = 100
-
-; Initial velocities
-gen-vel                 = yes
-gen-temp                = 300
-gen-seed                = -1

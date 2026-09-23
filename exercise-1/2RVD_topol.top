@@ -1654,4 +1654,6 @@ CLN025;
 [ molecules ]
 ; Compound        #mols
 Protein_chain_A     1
-SOL              4000
+SOL         3976
+K                13
+CL               11
