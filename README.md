@@ -17,6 +17,10 @@ conda activate gromacs-tutorial
 jupyter lab
 ```
 
+You can also run it in Binder
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/allexandre97/gromacs-tutorial.git/HEAD?urlpath=%2Fdoc%2Ftree%2FExercise.ipynb)
+
 Open `Exercises.ipynb` in JupyterLab. Run its Python cells in order. Commands shown in fenced `bash` blocks belong in a **terminal opened in this repository directory**, not in Python cells. If you work elsewhere, the relative paths in the notebook will not resolve. The Part 2 commands request 4 MPI ranks × 8 OpenMP threads; if your machine has fewer cores, reduce `-ntmpi` and/or `-ntomp` rather than running four jobs in parallel.
 
 ## Files and precomputed data
