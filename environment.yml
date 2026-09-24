@@ -6,11 +6,23 @@ channels:
 
 dependencies:
   - python=3.12
+
+  # Molecular simulation
   - gromacs=2026.3
+  - mdanalysis
+
+  # Jupyter stack
   - jupyterlab=4.0.10
+  - notebook=7.0.6
+  - ipykernel=6.29.5
   - ipywidgets=8.1.1
-  - nglview=3.1.4
+  - jupyterlab_widgets=3.0.9
+  - widgetsnbextension=4.0.9
+
+  # Molecular visualization
+  - nglview=3.1.0
   - "setuptools<81"
+
+  # Analysis
   - numpy
   - matplotlib
-  - mdanalysis
