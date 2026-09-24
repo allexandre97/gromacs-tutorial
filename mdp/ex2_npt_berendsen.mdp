@@ -1,0 +1,42 @@
+; Exercise 2: barostat comparison, Berendsen (200 ps NPT)
+; Only the barostat differs from ex2_npt_crescale.mdp.
+integrator              = md-vv
+dt                      = 0.002
+nsteps                  = 500000
+continuation            = yes
+gen-vel                 = no
+
+nstlog                  = 500
+nstenergy               = 100
+nstcalcenergy           = 50
+nstxout-compressed      = 500
+
+cutoff-scheme           = Verlet
+nstlist                 = 20
+rlist                   = 1.0
+coulombtype             = PME
+rcoulomb                = 1.0
+fourierspacing          = 0.12
+pme-order               = 4
+vdwtype                 = Cut-off
+vdw-modifier            = Potential-shift
+rvdw                    = 1.0
+DispCorr                = EnerPres
+
+tcoupl                  = V-rescale
+tc-grps                 = System
+tau-t                   = 0.1
+ref-t                   = 340
+pcoupl                  = Berendsen
+pcoupltype              = isotropic
+ref-p                   = 1.0
+tau-p                   = 5.0
+compressibility         = 4.5e-5
+
+constraints             = h-bonds
+constraint-algorithm    = lincs
+lincs-iter              = 1
+lincs-order             = 4
+pbc                     = xyz
+comm-mode               = Linear
+nstcomm                 = 50
