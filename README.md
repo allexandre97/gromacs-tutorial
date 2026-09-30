@@ -5,7 +5,7 @@ This is a short introduction to biomolecular simulation. Start with **[Exercises
 - **Part 1:** prepare a small protein in water, minimise its energy, and equilibrate it in NVT and NPT.
 - **Part 2:** compare how thermostat and barostat choices affect dynamics and volume fluctuations.
 
-The tutorial is designed for a one-hour session. You do **not** need to finish every simulation during class: precomputed data are provided so you can spend your time interpreting the results.
+The tutorial is designed for a 90-minute session. All the simulations have been pre-run and their outputs are provided, so you can spend your time interpreting the results. We will probably **not** have time to run the simulations during class, but the notebook contains every command in case you want to repeat them yourself.
 
 ## Getting started
 
@@ -19,15 +19,16 @@ jupyter lab
 
 You can also run it in Binder
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/allexandre97/gromacs-tutorial.git/HEAD?urlpath=%2Fdoc%2Ftree%2FExercise.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/allexandre97/gromacs-tutorial.git/HEAD?urlpath=%2Fdoc%2Ftree%2FExercises.ipynb)
 
-Open `Exercises.ipynb` in JupyterLab. Run its Python cells in order. Commands shown in fenced `bash` blocks belong in a **terminal opened in this repository directory**, not in Python cells. If you work elsewhere, the relative paths in the notebook will not resolve. The Part 2 commands request 4 MPI ranks × 8 OpenMP threads; if your machine has fewer cores, reduce `-ntmpi` and/or `-ntomp` rather than running four jobs in parallel.
+Open `Exercises.ipynb` in JupyterLab. Run its Python cells in order. Commands shown in fenced `bash` blocks belong in a **terminal opened in this repository directory**, not in Python cells. If you work elsewhere, the relative paths in the notebook will not resolve. If you repeat the simulations, see the note on performance in the notebook for how to use several cores.
 
 ## Files and precomputed data
 
 - [`structures/2RVD.pdb`](structures/2RVD.pdb) is the starting structure.
 - [`mdp/`](mdp/) contains the simulation settings. The `ex2_*.mdp` files define the four Part 2 comparisons.
-- [`exercise-1/`](exercise-1/) already contains the intermediate structures, topology, minimised structure, equilibration trajectories and extracted `.xvg` data used by Part 1. [`exercise-1/results/`](exercise-1/results/) holds a small backup of the minimisation structure and energy file.
-- [`exercise-2/results/`](exercise-2/results/) contains extracted temperature, MSD and NPT energy/volume data for the plots, as well as `.edr` files for re-extracting quantities. The two NVT `.xtc` trajectories are included so you can recalculate the water MSD; their matching `.tpr` inputs are in [`exercise-2/`](exercise-2/). Other large run outputs are intentionally omitted.
+- [`exercise-1/`](exercise-1/) is the working directory for Part 1. It already contains the outputs of the quick preparation steps (box, solvation, topology, ions and energy minimisation), so the notebook's visualisation cells work even if a command fails. Running the commands yourself will replace these files with equivalent ones.
+- [`exercise-1/reference/`](exercise-1/reference/) holds the reference data: a consistent copy of the ionised structure and topology, the minimisation results, and the pre-run NVT and NPT equilibrations with their extracted `.xvg` files. The Part 1 analysis cells read from here.
+- [`exercise-2/reference/`](exercise-2/reference/) holds the pre-run Part 2 simulations: their `.tpr` inputs, `.edr` energy files, extracted temperature, MSD and NPT energy/volume data, and the two NVT `.xtc` trajectories needed to recalculate the water MSD. Other large run outputs are intentionally omitted. The Part 2 analysis cells read from here.
 
-If your machine cannot run GROMACS, you can still run the notebook's analysis cells with the supplied `.xvg` files. If you do run the simulations, follow the notebook's order: in particular, the supplied Part 1 topology **already contains ions** and must be used with the ionised structure, not the earlier un-ionised one. Running the commands may replace or create output files under `exercise-1/` and `exercise-2/results/`.
+Commands you run yourself write to `exercise-1/` and `exercise-2/`, never to the `reference/` folders. If you run the simulations and want to plot your own results, change the paths in the analysis cells. Follow the notebook's order: in particular, the ionised topology must be used with the ionised structure, not the earlier un-ionised one. If your preparation files get out of sync, copy `2RVD_ions.pdb`, `2RVD_topol.top` and `2RVD_posre.itp` from `exercise-1/reference/` back into `exercise-1/`.

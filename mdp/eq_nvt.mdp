@@ -24,7 +24,7 @@ pme-order               = 4
 
 ; Lennard-Jones interactions
 vdwtype                 = Cut-off ;PME
-vdw-modifier            = Force-switch
+vdw-modifier            = Potential-shift
 rvdw                    = 1.0
 
 ; Temperature coupling
@@ -41,6 +41,9 @@ gen-seed                = -1
 
 ; Pressure coupling
 pcoupl                  = no
+
+; Dispersion Correction
+DispCorr                = EnerPres
 
 ; Constraints
 constraints             = h-bonds

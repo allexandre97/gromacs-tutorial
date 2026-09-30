@@ -5,3 +5,10 @@ __pycache__/
 
 #*#
 *.bak
+
+# MDAnalysis trajectory offset caches
+.*_offsets.npz
+.*_offsets.lock
+
+# grompp by-product
+mdout.mdp

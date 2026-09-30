@@ -1,7 +1,7 @@
 ; Energy minimization using steepest descent
 
 integrator      = steep
-emtol           = 10.0       ; kJ mol^-1 nm^-1
+emtol           = 1000.0     ; kJ mol^-1 nm^-1
 nsteps          = 10000
 
 ; Neighbor searching
