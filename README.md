@@ -17,9 +17,9 @@ conda activate gromacs-tutorial
 jupyter lab
 ```
 
-You can also run it in Binder
+You can also run it in Binder (the link opens version `v1.0` of the tutorial):
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/allexandre97/gromacs-tutorial.git/HEAD?urlpath=%2Fdoc%2Ftree%2FExercises.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/allexandre97/gromacs-tutorial/v1.0?urlpath=%2Fdoc%2Ftree%2FExercises.ipynb)
 
 Open `Exercises.ipynb` in JupyterLab. Run its Python cells in order. Commands shown in fenced `bash` blocks belong in a **terminal opened in this repository directory**, not in Python cells. If you work elsewhere, the relative paths in the notebook will not resolve. If you repeat the simulations, see the note on performance in the notebook for how to use several cores.
 
